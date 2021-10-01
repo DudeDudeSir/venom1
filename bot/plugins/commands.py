@@ -35,7 +35,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '🎖️ Share Group 🎖️', url="https://t.me/share/url?url=https://t.me/movie_house2"
+                                    '🎖️ Share Group 🎖️', url="https://t.me/share/url?url=https://t.me/moviecenter321"
                                 )
                         ]
                     ]
@@ -47,10 +47,10 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚜️ My Developer ⚜️', url='https://t.me/DS_KUNJAVA')
+        InlineKeyboardButton('⚜️ My Developer ⚜️', url='https://t.me/RahulrsParu')
     ],[
-        InlineKeyboardButton('🔰 ɢʀᴏᴜᴘ 🔰', url ='https://t.me/movie_house2'),
-        InlineKeyboardButton('⭕️ ᴄʜᴀɴɴᴇʟ ⭕️', url='https://t.me/ds_movies1')
+        InlineKeyboardButton('🔰 ɢʀᴏᴜᴘ 🔰', url ='https://t.me/movie_center_RU'),
+        InlineKeyboardButton('⭕️ ᴄʜᴀɴɴᴇʟ ⭕️', url='https://t.me/moviecenter321')
     ],[
         InlineKeyboardButton('Close ⚡️', callback_data='close'),
         InlineKeyboardButton('Help ⚙', callback_data="help")
@@ -60,7 +60,7 @@ async def start(bot, update):
     
     await bot.send_photo(
         chat_id=update.chat.id,
-        photo="https://telegra.ph/file/c2edac4a6cd119b61e9a9.jpg",
+        photo="https://telegra.ph/file/a9b419a8786a4a1608947.jpg",
         caption=Translation.START_TEXT.format(
                 update.from_user.first_name),
         reply_markup=reply_markup,
