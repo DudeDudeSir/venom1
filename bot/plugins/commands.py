@@ -28,7 +28,7 @@ async def start(bot, update):
             await update.reply_cached_media(
                 file_id,
                 quote=True,
-                caption = f"<code>{file_name}</code>\n🔰༺ ──•◈•─ ─•◈•──༻🔰\n📢ɢʀᴏᴜᴘ    :@movie_house2\n📢ᴄʜᴀɴɴᴇʟ :@ds_movies1",
+                caption =f"<code>{file_name}</code>\n \n<b>♻️Join with us: @movie_center_RU</b>\n \n<b>♻️Join Our Group: @moviecenter321</b>",
                 parse_mode="html",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -47,14 +47,8 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚜️ My Developer ⚜️', url='https://t.me/RahulrsParu')
-    ],[
-        InlineKeyboardButton('🔰 ɢʀᴏᴜᴘ 🔰', url ='https://t.me/movie_center_RU'),
-        InlineKeyboardButton('⭕️ ᴄʜᴀɴɴᴇʟ ⭕️', url='https://t.me/moviecenter321')
-    ],[
-        InlineKeyboardButton('Close ⚡️', callback_data='close'),
-        InlineKeyboardButton('Help ⚙', callback_data="help")
-    ]]
+        InlineKeyboardButton('⚜️💪🔰 MY Group 💪🔰⚜️', url='https://t.me/moviecenter321')
+    ],
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
