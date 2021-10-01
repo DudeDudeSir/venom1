@@ -15,8 +15,8 @@ INVITE_LINK = {}
 ACTIVE_CHATS = {}
 db = Database()
 
-@Bot.on_message(filters.text & filters.group & ~filters.edited, group=0)
-async def auto_filter(bot: Client, update: Message):
+@Bot.on_message(filters.text & filters.group & ~filters.bot, group=0)
+async def auto_filter(bot, update):
     """
     A Funtion To Handle Incoming Text And Reply With Appropriate Results
     """
@@ -28,9 +28,7 @@ async def auto_filter(bot: Client, update: Message):
     if ("https://" or "http://") in update.text:
         return
     
-    # Targetting Only 1000 - 2999 to remove from search query..!
-    # Make the below line as: query = update.text to make year too in search query..!
-    query = re.sub(r"[1-2]\d{3}", "", update.text) 
+    query = re.sub(r"[1-2]\d{3}", "", update.text) # Targetting Only 1000 - 2999 😁
     
     if len(query) < 2:
         return
@@ -57,11 +55,16 @@ async def auto_filter(bot: Client, update: Message):
     max_per_page = configs["configs"]["max_per_page"] # maximum buttom per page 
     show_invite = configs["configs"]["show_invite_link"] # should or not show active chat invite link
     
-    # show_invite = (False if pm_file_chat == True else show_invite) # turn show_invite to False if pm_file_chat is True
+    show_invite = (False if pm_file_chat == True else show_invite) # turn show_invite to False if pm_file_chat is True
     
     filters = await db.get_filters(group_id, query)
     
     if filters:
+        results.append(
+                [
+                    InlineKeyboardButton("💢 ᴊᴏɪɴ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ 💢", url="https://t.me/movie_center_RU")
+                ]
+            )
         for filter in filters: # iterating through each files
             file_name = filter.get("file_name")
             file_type = filter.get("file_type")
@@ -73,19 +76,19 @@ async def auto_filter(bot: Client, update: Message):
             if file_size < 1024:
                 file_size = f"[{file_size} B]"
             elif file_size < (1024**2):
-                file_size = f"[{str(round(file_size/1024, 2))} KiB] "
+                file_size = f"[{str(round(file_size/1024, 2))} KB] "
             elif file_size < (1024**3):
-                file_size = f"[{str(round(file_size/(1024**2), 2))} MiB] "
+                file_size = f"[{str(round(file_size/(1024**2), 2))} MB] "
             elif file_size < (1024**4):
-                file_size = f"[{str(round(file_size/(1024**3), 2))} GiB] "
+                file_size = f"[{str(round(file_size/(1024**3), 2))} GB] "
             
             
             file_size = "" if file_size == ("[0 B]") else file_size
             
             # add emoji down below inside " " if you want..
-            button_text = f"{file_size}{file_name}"
+            button_text = f"⚜{file_size}{file_name}"
             
-            
+
             if file_type == "video":
                 if allow_video: 
                     pass
@@ -149,13 +152,13 @@ async def auto_filter(bot: Client, update: Message):
         if len_result != 1:
             result[0].append(
                 [
-                    InlineKeyboardButton("Next ⏩", callback_data=f"navigate(0|next|{query})")
+                    InlineKeyboardButton("🚀 Go to Next page 🚀", callback_data=f"navigate(0|next|{query})")
                 ]
             )
         
         # Just A Decaration
         result[0].append([
-            InlineKeyboardButton(f"🔰 Page 1/{len_result if len_result < max_pages else max_pages} 🔰", callback_data="ignore")
+            InlineKeyboardButton(f"⭕️ Page 1/{len_result if len_result < max_pages else max_pages} ⭕️", callback_data="ignore")
         ])
         
         
@@ -195,9 +198,8 @@ async def auto_filter(bot: Client, update: Message):
                 
             for x in ibuttons:
                 result[0].insert(0, x) #Insert invite link buttons at first of page
-            
-            # Free Up Memory...
-            ibuttons = None
+                
+            ibuttons = None # Free Up Memory...
             achatId = None
             
             
@@ -206,7 +208,7 @@ async def auto_filter(bot: Client, update: Message):
         try:
             await bot.send_message(
                 chat_id = update.chat.id,
-                text=f"Found {(len_results)} Results For Your Query: <code>{query}</code>",
+                text=f"𝐆𝐫𝐨𝐮𝐩:- @moviecenter321\n𝐑𝐞𝐬𝐮𝐥𝐭𝐬 𝐅𝐨𝐮𝐧𝐝:- {(len_results)}\n𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐌𝐨𝐯𝐢𝐞:- <code>{query}</code>",
                 reply_markup=reply_markup,
                 parse_mode="html",
                 reply_to_message_id=update.message_id
@@ -288,4 +290,3 @@ async def recacher(group_id, ReCacheInvite=True, ReCacheActive=False, bot=Bot, u
             
             ACTIVE_CHATS[str(group_id)] = achatId
     return 
-
