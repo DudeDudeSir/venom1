@@ -35,9 +35,16 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '🎖️ Share Group 🎖️', url="https://t.me/share/url?url=https://t.me/moviecenter321"
+                                    '🙏 join our channel🙏', url="https://t.me/movie_center_RU"
+                                )
+                        ],
+                        [
+                            InlineKeyboardButton
+                                (
+                                    '🧩 Share Group 🧩', url="https://t.me/share/url?url=https://t.me/moviecenter321"
                                 )
                         ]
+                       
                     ]
                 )
             )
@@ -47,7 +54,11 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚜️💪🔰 MY Group 💪🔰⚜️', url='https://t.me/moviecenter321')
+        InlineKeyboardButton('⚡🔰🔰 MY Group 🔰🔰⚡', url='https://t.me/moviecenter321')
+    ],]
+    
+   buttons = [[
+        InlineKeyboardButton('🔰🙏 join our channel 🔰🙏', url='https://t.me/movie_center_RU')
     ],]
     
     reply_markup = InlineKeyboardMarkup(buttons)
