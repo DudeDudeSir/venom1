@@ -48,7 +48,7 @@ async def start(bot, update):
 
     buttons = [[
         InlineKeyboardButton('⚜️💪🔰 MY Group 💪🔰⚜️', url='https://t.me/moviecenter321')
-    ],
+    ],]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
