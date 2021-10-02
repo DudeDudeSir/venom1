@@ -6,7 +6,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from bot import Translation, LOGGER # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
-Improt random
+Import random
 db = Database()
 
 PHOTO=[
@@ -61,7 +61,7 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚡🔰🔰 MY Group 🔰🔰⚡', url='https://t.me/moviecenter321')
+        InlineKeyboardButton('⚡🔰🔰 My Group 🔰🔰⚡', url='https://t.me/moviecenter321')
     ],[
         InlineKeyboardButton('🔰🙏 join our channel 🔰🙏', url='https://t.me/movie_center_RU')
     ],]
