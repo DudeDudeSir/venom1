@@ -73,7 +73,7 @@ async def start(bot, update):
     
     await bot.send_photo(
         chat_id=update.chat.id,
-        Photo=random.choice(PHOTO).
+        Photo=random.choice(PHOTO),
 
         caption=Translation.START_TEXT.format(
                 update.from_user.first_name),
