@@ -70,7 +70,7 @@ async def start(bot, update):
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await bot.send_photo(
+    await bot.send_photo (
         chat_id=update.chat.id,
         Photo=random.choice(PHOTO),
 
