@@ -8,6 +8,12 @@ from bot import Translation, LOGGER # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
 
 db = Database()
+PHOTO=[
+"https://telegra.ph/file/80159c858477ea63ce852.jpg",
+"https://telegra.ph/file/9b4f641dc0ebf071771d2.jpg",
+"https://telegra.ph/file/9fabb9ad9ebffd6211f28.jpg",
+
+ ]
 
 @Client.on_message(filters.command(["start"]) & filters.private, group=1)
 async def start(bot, update):
@@ -74,18 +80,9 @@ async def start(bot, update):
 
 @Client.on_message(filters.command(["help"]) & filters.private, group=1)
 async def help(bot, update):
-    buttons = [[
-        InlineKeyboardButton('⚜️ My Developer ⚜️', url='https://t.me/DS_KUNJAVA')
-    ],[
-        InlineKeyboardButton('🔰 ɢʀᴏᴜᴘ 🔰', url ='https://t.me/movie_house2'),
-        InlineKeyboardButton('⭕️ ᴄʜᴀɴɴᴇʟ ⭕️', url='https://t.me/ds_movies1')
-    ],[
-        InlineKeyboardButton('Home 🏠', callback_data='start'),
-        InlineKeyboardButton('About 🌀', callback_data='about')
-    ],[
-        InlineKeyboardButton('Close ⚡️', callback_data='close')
-    ]]
     
+                 
+                
     reply_markup = InlineKeyboardMarkup(buttons)
     
     await bot.send_message(
