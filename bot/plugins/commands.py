@@ -8,14 +8,11 @@ from bot import Translation, LOGGER # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
 import random
 
-PHOTOS = [
+PHOTO= [
     "https://telegra.ph/file/80159c858477ea63ce852.jpg",
     "https://telegra.ph/file/9b4f641dc0ebf071771d2.jpg",
     "https://telegra.ph/file/9fabb9ad9ebffd6211f28.jpg",
     "https://telegra.ph/file/a9b419a8786a4a1608947.jpg",
-    "https://telegra.ph/file/84e93fe8ab3dcb74d8a23.jpg",
-    "https://telegra.ph/file/9fabb9ad9ebffd6211f28.jpg",
-    "https://telegra.ph/file/9fabb9ad9ebffd6211f28.jpg",
 ]
 
 db = Database()
@@ -75,7 +72,7 @@ async def start(bot, update):
     
     await bot.send_photo(
         chat_id=update.chat.id,
-        Photo=random.choice(PHOTOS),
+        Photo= random.choice(PHOTO),
 
         caption=Translation.START_TEXT.format(
                 update.from_user.first_name),
