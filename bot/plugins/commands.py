@@ -8,15 +8,16 @@ from bot import Translation, LOGGER # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
 import random
 
-PHOTO= [
+PHOTOS = [
     "https://telegra.ph/file/80159c858477ea63ce852.jpg",
     "https://telegra.ph/file/9b4f641dc0ebf071771d2.jpg",
     "https://telegra.ph/file/9fabb9ad9ebffd6211f28.jpg",
-    "https://telegra.ph/file/a9b419a8786a4a1608947.jpg",
+    "https://telegra.ph/file/84e93fe8ab3dcb74d8a23.jpg",
+    "https://telegra.ph/file/84e93fe8ab3dcb74d8a23.jpg",
+    "https://telegra.ph/file/84e93fe8ab3dcb74d8a23.jpg",
 ]
 
 db = Database()
-
 
 @Client.on_message(filters.command(["start"]) & filters.private, group=1)
 async def start(bot, update):
@@ -37,10 +38,11 @@ async def start(bot, update):
             await update.reply_cached_media(
                 file_id,
                 quote=True,
-                caption =f"<code>{file_name}</code>\n \n<b>♻️Join with us: @movie_center_RU</b>\n \n<b>♻️Join Our Group: @moviecenter321</b>",
+                caption = f"<code>{file_name}</code>\n \n<b>♻️Join with us: @movie_center_RU</b>\n \n<b>♻️Join Our Group: @moviecenter321</b>",
                 parse_mode="html",
                 reply_markup=InlineKeyboardMarkup(
                     [
+                    
                         [
                             InlineKeyboardButton
                                 (
@@ -63,21 +65,20 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('⚡🔰🔰 My Group 🔰🔰⚡', url='https://t.me/moviecenter321')
+        InlineKeyboardButton('🔰⚡ My Group 🔰⚡', url='https://t.me/moviecenter321')
     ],[
-        InlineKeyboardButton('🔰🙏 join our channel 🔰🙏', url='https://t.me/movie_center_RU')
-    ],]
+        InlineKeyboardButton('🔰 join our channel  🔰', url ='https://t.me/movie_center_RU'),
+        
+    ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await bot.send_PHOTO(
+    await bot.send_photo(
         chat_id=update.chat.id,
-        PHOTO=random.choice(PHOTO),
-
+        photo=random.choice(PHOTOS),
         caption=Translation.START_TEXT.format(
                 update.from_user.first_name),
         reply_markup=reply_markup,
         parse_mode="html",
         reply_to_message_id=update.message_id
     )
-
