@@ -9,14 +9,15 @@ from bot.database import Database # pylint: disable=import-error
 
 Import random
 
-db = Database()
-
 PHOTO=[
 "https://telegra.ph/file/80159c858477ea63ce852.jpg",
 "https://telegra.ph/file/9b4f641dc0ebf071771d2.jpg",
 "https://telegra.ph/file/9fabb9ad9ebffd6211f28.jpg",
 
  ]
+
+db = Database()
+
 
 @Client.on_message(filters.command(["start"]) & filters.private, group=1)
 async def start(bot, update):
