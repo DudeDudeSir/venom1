@@ -72,7 +72,7 @@ async def start(bot, update):
     
     await bot.send_photo(
         chat_id=update.chat.id,
-        Photo= random.choice(PHOTO),
+        Photo=random.choice(PHOTO),
 
         caption=Translation.START_TEXT.format(
                 update.from_user.first_name),
@@ -81,39 +81,3 @@ async def start(bot, update):
         reply_to_message_id=update.message_id
     )
 
-
-@Client.on_message(filters.command(["help"]) & filters.private, group=1)
-async def help(bot, update):
-    
-                 
-                
-    reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.HELP_TEXT,
-        reply_markup=reply_markup,
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
-
-
-@Client.on_message(filters.command(["about"]) & filters.private, group=1)
-async def about(bot, update):
-    
-    buttons = [[
-        InlineKeyboardButton('⚡️ Support ⚡️', url ='https://t.me/movie_house2')
-    ],[
-        InlineKeyboardButton('Home 🏠', callback_data='start'),
-        InlineKeyboardButton('Close 🔐', callback_data='close')
-    ]]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.ABOUT_TEXT,
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
